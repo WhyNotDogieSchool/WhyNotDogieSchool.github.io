@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>Translator</h1>
+<textarea id="Input" name="Input" rows="4" cols="50">
+cheese
+</textarea>
+<textarea id="Output" name="Output" rows="4" cols="50" readonly>
+
+</textarea>
+<script>
+let inp = document.getElementById("Input");
+let out = document.getElementById("Output");
+function update(){
+	out.value = inp.value;
+};
+setInterval(update, 25);
+</script>
+</body>
+</html>
+
+
