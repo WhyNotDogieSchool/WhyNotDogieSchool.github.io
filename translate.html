@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h1>Translator</h1>
+<h1>DoggoLang Translator</h1>
 <textarea id="Input" name="Input" rows="4" cols="50">
 cheese
 </textarea>
@@ -13,6 +13,31 @@ cheese
 
 </textarea>
 <script>
+const iwords = [
+"Dog",
+"Cat",
+"Bird"];
+const owords = [
+"Doggo",
+"Catto",
+"Birb"];
+let sptext = "";
+function fe(wrd, index){
+	sptext += " ";
+	if (iwords.includes(wrd)){
+    	sptext += owords[index];
+    } else {
+    	sptext += wrd;
+    };
+}
+function translate(text){
+	ret = "";
+	sptext = text.split(" ");
+    sptext.forEach(fe);
+    return sptext;
+};
+
+
 let inp = document.getElementById("Input");
 let out = document.getElementById("Output");
 function update(){
@@ -22,5 +47,3 @@ setInterval(update, 25);
 </script>
 </body>
 </html>
-
-
