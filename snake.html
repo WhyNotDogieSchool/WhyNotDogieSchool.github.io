@@ -21,11 +21,23 @@
   </style>
 </head>
 <body>
+  <select id="snakes" name="snakes">
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+    <option value="pink">Pink</option>
+    <option value="yellow">Yellow</option>
+    <option value="white">White</option>
+    <option value="#40E0D0">Teal</option>
+  </select>
 <canvas width="400" height="400" id="game"></canvas>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
-
+var e = document.getElementById("snakes");
+var col = "green"
+setInterval(function(){
+  col = e.options[e.selectedIndex].value
+}, 100)
 // the canvas width & height, snake x & y, and the apple x & y, all need to be a multiples of the grid size in order for collision detection to work
 // (e.g. 16 * 25 = 400)
 var grid = 16;
@@ -101,7 +113,7 @@ function loop() {
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
 
   // draw snake one cell at a time
-  context.fillStyle = 'green';
+  context.fillStyle = col;
   snake.cells.forEach(function(cell, index) {
 
     // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
