@@ -26,7 +26,7 @@
             const nr = document.getElementById("nr")
             const av = document.getElementById("av")
             setInterval(() => {
-                out.value = (Number((pt.value/av.value)*(10-nr.value))+Number(nr.value)).toString()
+                out.value = (Math.floor((((Number((pt.value/av.value)*(10-nr.value))+Number(nr.value)))*10)+0.5)/10).toString()
             }, 100);
         </script>
     </body>
