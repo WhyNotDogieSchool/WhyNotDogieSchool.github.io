@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <p id="err"></p>
+    <var id="discord-widget-guildid" style="display: none;">
+        {"guildid":"INSERT GUILDID HERE"}
+    </var><!--guildid example: {"guildid":"927534103107084348"}-->
+    <script>
+        let deflink = "927534103107084348"
+        const def = `
+        {"guildid":"INSERT GUILDID HERE"}
+    `
+        if (document.getElementById('discord-widget-guildid').innerHTML != def) {
+            deflink = JSON.parse(document.getElementById('discord-widget-guildid').innerHTML).guildid
+        }
+        
+        fetch(`https://discord.com/api/guilds/${deflink}/widget.json`)
+            .then(res=>res.json())
+            .then(json=>{
+                if (json.message) {
+                    document.getElementById("err").innerHTML = json.message
+                } else {
+                    window.location.replace(json.instant_invite)
+                }
+            })
+            .catch(err=>{
+                document.getElementById("err").innerHTML = err
+            })
+    </script>
+</body>
+</html>
